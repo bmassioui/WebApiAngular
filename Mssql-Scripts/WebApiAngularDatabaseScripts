@@ -1,0 +1,27 @@
+-----Creation database 'WebApiAngularDataBase'
+CREATE DATABASE WebApiAngularDataBase
+USE WebApiAngularDataBase
+
+-----Creation 'Department' Table
+CREATE TABLE Department
+(
+    Department_Id int IDENTITY(1,1) PRIMARY KEY,
+    DepartmentName NVARCHAR(50)
+)
+-----FIlling out the 'Department' Table
+INSERT INTO Department VALUES
+('IT'),
+('Support')
+
+-----Creation 'Employee' Table
+CREATE TABLE Employee
+(
+    Employee_Id INT IDENTITY(1,1) PRIMARY KEY,
+    EmployeeName NVARCHAR(50),
+    Department_Id INT FOREIGN KEY REFERENCES Department(Department_Id),
+    JoiningDate Date default GetDate(),
+    ProfilAvatarFileName NVARCHAR(50)
+)
+-----Filling out the 'Employee' Table
+INSERT INTO Employee(EmployeeName, Department_Id, ProfilAvatarFileName)
+VALUES('Demo Employee', 2, 'DemoProfilAvatarFileName.png')
